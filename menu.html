@@ -1,0 +1,31 @@
+<!-- menu.html (yadhu krishna MotionCut Intern) -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <h1>Menu</h1>
+    {% for dish in dishes %}
+    <div>
+        <h2>{{ dish[1] }}</h2>
+        <p>{{ dish[2] }}</p>
+        <p>Price: ${{ dish[3] }}</p>
+        <form action="/order/{{ dish[0] }}" method="POST">
+            <button type="submit">Order</button>
+        </form>
+        <form action="/review/{{ dish[0] }}" method="POST">
+            <input type="number" name="rating" min="1" max="5" placeholder="Rating" required><br>
+            <textarea name="comment" placeholder="Comment" required></textarea><br>
+            <button type="submit">Submit Review</button>
+        </form>
+    </div>
+    {% endfor %}
+    <a href="/logout">Logout</a>
+</body>
+</html>
